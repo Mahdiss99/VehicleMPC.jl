@@ -20,7 +20,7 @@ The controllers optimize **progress along a track** while respecting vehicle and
 
 Both videos show **closed-loop nonlinear MPC with a six-state dynamic bicycle model** on the same 34.85 m multi-curvature circuit, starting from the same physical pose and speed. The second scenario adds six stationary obstacles in straights and turns. The solver is called at every control step; the animated positions and telemetry come from the recorded simulation, with visual interpolation between simulated plant samples. The body graphic is illustrative.
 
-A [kinematic-bicycle racing video](docs/media/race_kinematic.mp4) is also available ([poster](docs/media/race_kinematic_poster.png)).
+A [kinematic-bicycle racing video](https://raw.githubusercontent.com/Mahdiss99/VehicleMPC.jl/main/docs/media/race_kinematic.mp4) is also available ([poster](docs/media/race_kinematic_poster.png)).
 
 ## What is included
 
@@ -52,7 +52,7 @@ In the six-obstacle run, the minimum **physical disk-to-disk clearance** was **1
 
 **Real-time qualification:** the dynamic-model showcase runs are **offline simulations**. Computation sometimes exceeded the 100 ms control period; the simulation does not model that computational delay. This project does not claim hard real-time performance or certified collision avoidance. Full per-run statistics and the benchmark methodology are in [`benchmarks/results/dynamic_showcase.md`](benchmarks/results/dynamic_showcase.md).
 
-The recorded videos and table above use the controller's historical internal timer. Fresh showcase runs now measure wall-clock time around the complete `solve!` call, including final bookkeeping, and record that definition in their metadata. Plant simulation, export and rendering are excluded. The historical timing numbers have not been reinterpreted or replaced.
+The recorded videos and table above report the original controller-reported internal timings from those runs. Newer showcase runs record external wall-clock time around the complete `solve!` call, including final bookkeeping, and identify that definition in the exported metadata. Plant integration, export, and rendering are excluded from the external measurement. These are distinct timing definitions and are not mixed together.
 
 For a separate, matched comparison between **kinematic** nonlinear MPC (Ipopt) and linearized MPC (OSQP), see the [benchmark comparison](docs/benchmark_comparison.md). These results should not be directly compared with the six-state dynamic benchmark as if the models were identical.
 
