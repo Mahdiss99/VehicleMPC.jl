@@ -1,0 +1,5 @@
+Manifest.toml
+/examples/output/
+/examples/showcase/output/
+__pycache__/
+.venv-showcase/

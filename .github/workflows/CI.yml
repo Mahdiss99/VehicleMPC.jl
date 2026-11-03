@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Julia ${{ matrix.version }} (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        version: ['1.10', '1.11']
+        os: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: ${{ matrix.version }}
+      - uses: julia-actions/cache@v2
+      - uses: julia-actions/julia-buildpkg@v1
+      - uses: julia-actions/julia-runtest@v1
+      # Headless smoke runs of the standalone examples. --no-time-budget removes the
+      # per-cycle time budgets so that the outcome does not depend on the runner's speed;
+      # no plotting and no trajectory files.
+      - name: Example smoke runs
+        run: |
+          julia --project=. examples/linear_straight.jl --cycles=40 --no-time-budget --no-csv
+          julia --project=. examples/linear_quarter.jl --cycles=40 --no-time-budget --no-csv
+          julia --project=. examples/linear_obstacle.jl --cycles=40 --no-time-budget --no-csv
+          julia --project=. examples/nmpc_obstacle.jl --cycles=40 --no-time-budget --no-csv
+          julia --project=. examples/showcase/race.jl --model=dynamic --cycles=30 --no-video
+          julia --project=. examples/showcase/race.jl --model=kinematic --cycles=30 --no-video
+          julia --project=. examples/showcase/multiple_obstacles.jl --model=dynamic --cycles=60 --no-video

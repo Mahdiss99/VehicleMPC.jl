@@ -1,0 +1,4 @@
+# Python packages of render_animation.py (versions used for the recorded videos: Python 3.12.3)
+matplotlib>=3.8      # 3.11.2
+numpy>=1.26          # 2.5.4
+imageio-ffmpeg>=0.5  # 0.6.0 (bundles an ffmpeg binary with libx264)
