@@ -9,13 +9,13 @@ The controllers optimize **progress along a track** while respecting vehicle and
 ## See it in action
 
 <p align="center">
-  <a href="docs/media/race_dynamic.mp4"><img src="docs/media/race_dynamic_poster.png" width="49%" alt="Dynamic bicycle nonlinear MPC racing on the complete multi-curvature circuit"></a>
-  <a href="docs/media/multiple_obstacles_dynamic.mp4"><img src="docs/media/multiple_obstacles_dynamic_poster.png" width="49%" alt="Dynamic bicycle nonlinear MPC navigating six stationary obstacles"></a>
+  <a href="https://mahdiss99.github.io/assets/video/pathplanningGround/race_dynamic.mp4"><img src="docs/media/race_dynamic_poster.png" width="49%" alt="Dynamic bicycle nonlinear MPC racing on the complete multi-curvature circuit"></a>
+  <a href="https://mahdiss99.github.io/assets/video/pathplanningGround/multiple_obstacles_dynamic.mp4"><img src="docs/media/multiple_obstacles_dynamic_poster.png" width="49%" alt="Dynamic bicycle nonlinear MPC navigating six stationary obstacles"></a>
 </p>
 
 <p align="center">
-  <a href="docs/media/race_dynamic.mp4"><strong>▶ Full-track racing</strong></a> &nbsp;·&nbsp;
-  <a href="docs/media/multiple_obstacles_dynamic.mp4"><strong>▶ Six-obstacle avoidance</strong></a>
+  <a href="https://mahdiss99.github.io/assets/video/pathplanningGround/race_dynamic.mp4"><strong>▶ Full-track racing</strong></a> &nbsp;·&nbsp;
+  <a href="https://mahdiss99.github.io/assets/video/pathplanningGround/multiple_obstacles_dynamic.mp4"><strong>▶ Six-obstacle avoidance</strong></a>
 </p>
 
 Both videos show **closed-loop nonlinear MPC with a six-state dynamic bicycle model** on the same 34.85 m multi-curvature circuit, starting from the same physical pose and speed. The second scenario adds six stationary obstacles in straights and turns. The solver is called at every control step; the animated positions and telemetry come from the recorded simulation, with visual interpolation between simulated plant samples. The body graphic is illustrative.
